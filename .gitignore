@@ -16,9 +16,9 @@ venv/
 *.swo
 
 # Sensitive files and credentials
+config.py  
+crisis_log.jsonl  
 service.json
-config.py  # Ignore this to prevent API key leaks; use config.example.py as a template
-crisis_log.jsonl  # Sensitive log data
 
 # Specific exclusions as requested
 templates/chatclaude.html

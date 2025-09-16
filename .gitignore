@@ -1,0 +1,38 @@
+# Python bytecode and cache
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.Python
+
+# Virtual environments
+venv/
+.venv/
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Sensitive files and credentials
+service.json
+config.py  # Ignore this to prevent API key leaks; use config.example.py as a template
+crisis_log.jsonl  # Sensitive log data
+
+# Specific exclusions as requested
+templates/chatclaude.html
+mainold.py
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Other common ignores
+node_modules/  # If you add any JS deps later
+.pytest_cache/

@@ -20,5 +20,5 @@ This project is built using FastAPI, Google Cloud AI, and Gemini Live API, makin
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/RonitThukral/MITRA.git
+git clone https://github.com/RonitThukral/MITRA_AI_GOOGLE.git
 cd MITRA

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MITRA - Mental Intelligence for Therapy, Recovery and Awareness</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Premium font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="min-h-screen bg-gray-900 text-gray-100 antialiased dark">
+    <div class="max-w-7xl mx-auto h-screen grid grid-cols-1 md:grid-cols-[280px_1fr] gap-0">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="hidden md:flex flex-col bg-gray-800 border-r border-gray-700">
+            <!-- Sidebar Header -->
+            <div class="p-4 border-b border-gray-700">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <span class="text-white text-sm font-bold">M</span>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-white">MITRA</div>
+                        <div class="text-xs text-gray-400">Mental Wellness AI</div>
+                    </div>
+                </div>
+                <button id="new-chat" class="w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-medium text-gray-200 bg-gray-700 border border-gray-600 rounded-lg hover:bg-gray-600 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    New chat
+                </button>
+            </div>
+            <!-- Features Section -->
+            <div class="p-4 border-b border-gray-700">
+                <div class="text-xs font-medium text-gray-400 mb-3 uppercase tracking-wider">Features</div>
+                <!-- Career Suggest Toggle -->
+                <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-white">Career Suggest</div>
+                            <div class="text-xs text-gray-400">Real-time web search</div>
+                        </div>
+                    </div>
+                    <div id="career-toggle" class="toggle-switch cursor-pointer">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+                <!-- Mental Health Mode (always active) -->
+                <div class="flex items-center gap-3 p-3 bg-purple-600/20 border border-purple-600/50 rounded-lg">
+                    <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm font-medium text-white">Mental Health</div>
+                        <div class="text-xs text-purple-300">Always active</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chat History -->
+            <nav class="flex-1 overflow-auto p-4">
+                <div class="text-xs font-medium text-gray-400 mb-3 uppercase tracking-wider">Recent</div>
+                <ul id="saved-chats" class="space-y-1"></ul>
+            </nav>
+            <!-- Sidebar Footer -->
+            <div class="p-4 border-t border-gray-700">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-gray-700 border border-accent-purple flex items-center justify-center">
+                            <span class="text-white text-sm font-medium">AI</span>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-white">MITRA AI</div>
+                            <div class="text-xs text-gray-400">Always here for you</div>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="w-full flex items-center justify-center gap-2 py-2 px-3 text-xs font-medium text-gray-300 bg-gray-700 border border-gray-600 rounded-md hover:bg-gray-600 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+                    </svg>
+                    Light mode
+                </button>
+            </div>
+        </aside>
+        <!-- MAIN CHAT AREA -->
+        <main class="flex flex-col bg-gray-900 overflow-hidden">
+            <!-- HEADER -->
+            <header class="flex items-center justify-between px-4 py-3 border-b border-gray-700 bg-gray-900">
+                <div class="flex items-center gap-4">
+                    <button id="open-sidebar" class="md:hidden p-2 hover:bg-gray-800 rounded-lg transition-colors" aria-label="Open menu">
+                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-3">
+                        <h1 class="text-lg font-semibold text-white">MITRA</h1>
+                        <div id="mode-indicator" class="hidden sm:block text-sm">
+                            <span class="text-gray-400">Mental Health Support</span>
+                        </div>
+                        <!-- Career Mode Badge -->
+                        <div id="career-badge" class="hidden career-mode-badge text-xs px-2 py-1 rounded-full text-white font-medium">
+                            🌐 Career Guidance Active
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div id="search-status" class="hidden search-status">
+                        Ready
+                    </div>
+                    <div id="status" class="text-xs text-gray-400 hidden sm:block">Online</div>
+                    <button id="clear-btn" class="px-3 py-1.5 text-sm text-gray-400 hover:bg-gray-800 rounded-lg transition-colors">
+                        Clear
+                    </button>
+                </div>
+            </header>
+            <!-- CHAT AREA -->
+            <section id="chat-area" class="flex-1 flex flex-col overflow-hidden">
+                <div id="messages" class="flex-1 overflow-y-auto">
+                    <div class="max-w-3xl mx-auto px-4 py-6">
+                        <div class="flex gap-4 mb-6">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-sm font-medium">M</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-gray-100 leading-relaxed ai-response">
+                                    <div class="search-response">
+                                        <p><span class="search-icon">🧠</span> <strong>Hello! I'm MITRA, your AI companion for mental health support and career guidance.</strong></p>
+                                        <h3>🎯 How I Can Help You</h3>
+                                        <ul>
+                                            <li><strong>Mental Health:</strong> Emotional support, coping strategies, and wellness tips</li>
+                                            <li><strong>Career Guidance:</strong> Educational pathways, career options, and real-time information</li>
+                                            <li><strong>Live Voice Chat:</strong> Real-time conversations with voice and video</li>
+                                        </ul>
+                                        <h3>💡 Getting Started</h3>
+                                        <p>Toggle the <strong>"Career Suggest"</strong> feature in the sidebar for specialized career counseling with live web search capabilities. I can help with exam dates, college admissions, career planning, and much more!</p>
+                                        <h3>🔗 Ready to Help</h3>
+                                        <p>What would you like to talk about today?</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-xs text-gray-400">
+                                    Tip: Press <kbd class="px-1.5 py-0.5 bg-gray-800 text-gray-400 rounded text-xs font-mono">Enter</kbd> to send, 
+                                    <kbd class="px-1.5 py-0.5 bg-gray-800 text-gray-400 rounded text-xs font-mono">Shift + Enter</kbd> for new line
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- INPUT AREA -->
+                <div class="border-t border-gray-700 bg-gray-900">
+                    <form id="composer" class="max-w-3xl mx-auto p-4">
+                        <div class="relative flex items-end gap-3">
+                            <div class="flex-1">
+                                <textarea id="user-input" rows="1" placeholder="Share what's on your mind..." aria-label="Message input" class="w-full resize-none min-h-[52px] max-h-48 p-4 pr-12 rounded-2xl border border-gray-600 bg-gray-800 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-purple focus:border-transparent transition-colors"></textarea>
+                                <!-- Send button inside textarea -->
+                                <div class="absolute right-0 bottom-5">
+                                    <button id="send-btn" type="submit" class="w-10 h-10 bg-gray-600 hover:bg-gray-500 text-white rounded-lg flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-accent-purple">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Voice button for live session -->
+                            <audio id="audio-player" class="hidden"></audio>
+                            <button id="mic-btn" type="button" title="Start live voice session" class="w-10 h-10 relative left-12 bottom-5 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-600 flex items-center justify-center transition-colors">
+                                <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M12 1v11" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    <path d="M19 11a7 7 0 1 1-14 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="composer-meta" class="flex items-center justify-between text-xs text-gray-400 mt-2 px-1">
+                            <div class="flex items-center gap-4">
+                                <div>Model: <span class="font-medium text-gray-300">MITRA Mental Wellness AI</span></div>
+                                <div id="mode-status" class="text-purple-400">Mental Health Mode</div>
+                            </div>
+                            <div id="charcount">0</div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- Live Session Overlay -->
+    <div id="live-session-overlay" class="fixed inset-0 z-50 hidden flex items-center justify-center">
+        <div class="bg-gray-800 rounded-2xl p-8 shadow-2xl border border-gray-700 max-w-md w-full mx-4">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-semibold text-white">Live Voice Session</h2>
+                <button id="close-live-session" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- Video Element for live session -->
+            <div class="flex justify-center mb-6">
+                <video id="videoElement" autoplay muted class="bg-gray-900"></video>
+                <canvas id="canvasElement"></canvas>
+            </div>
+            <!-- Voice Control Buttons -->
+            <div class="flex justify-center gap-4 mb-4">
+                <button id="start-voice" class="voice-control-btn bg-green-600 hover:bg-green-500 text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                    </svg>
+                </button>
+                <button id="stop-voice" class="voice-control-btn bg-red-600 hover:bg-red-500 text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 5.586a2 2 0 112.828 2.828l6.364 6.364a2 2 0 11-2.828 2.828L5.586 11.05a2 2 0 010-2.828zM9 9l6 6"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- Live Chat Log -->
+            <div id="live-chat-log" class="bg-gray-900 rounded-lg p-4 h-32 overflow-y-auto text-sm text-gray-300 border border-gray-600">
+                <p class="text-gray-400 italic">Live conversation will appear here...</p>
+            </div>
+            <!-- Connection Status -->
+            <div class="mt-4 text-center">
+                <span id="live-status" class="text-xs text-gray-400">Ready to connect</span>
+            </div>
+        </div>
+    </div>
+    <!-- Toast -->
+    <div id="toast" class="fixed right-4 bottom-6 hidden z-50"></div>
+    <!-- External JavaScript -->
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -6,7 +6,8 @@ jinja2
 # Google Cloud and AI-related packages
 google-cloud-aiplatform
 google-cloud-texttospeech
-google-generative-ai
+google-generative-ai>=0.7.2
+
 
 # Asynchronous networking
 aiohttp

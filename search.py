@@ -1,6 +1,6 @@
 from typing import List, Dict
 import aiohttp
-from config import SERPAPI_KEY, GOOGLE_API_KEY, GOOGLE_CSE_ID
+from config import SERPAPI_KEY, GOOGLE_CSE_API_KEY, GOOGLE_CSE_ID
 
 async def search_serpapi(query: str, num_results: int = 8) -> List[Dict]:
     """Search using SerpApi."""
@@ -67,14 +67,14 @@ async def search_serpapi(query: str, num_results: int = 8) -> List[Dict]:
 
 async def search_google_custom(query: str, num_results: int = 5) -> List[Dict]:
     """Search using Google Custom Search API with official education sites."""
-    if not GOOGLE_API_KEY or not GOOGLE_CSE_ID:
+    if not GOOGLE_CSE_API_KEY or not GOOGLE_CSE_ID:
         print("Google Custom Search credentials missing")
         return []
     
     try:
         url = "https://www.googleapis.com/customsearch/v1"
         params = {
-            "key": GOOGLE_API_KEY,
+            "key": GOOGLE_CSE_API_KEY,
             "cx": GOOGLE_CSE_ID,
             "q": f"{query} site:nta.ac.in OR site:josaa.nic.in OR site:mhrd.gov.in OR site:ugc.ac.in",
             "num": min(num_results, 10),

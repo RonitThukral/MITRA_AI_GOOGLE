@@ -269,13 +269,13 @@ async def debug_sessions():
 
 @app.get("/health")
 async def health_check():
-    from config import SERPAPI_KEY, GOOGLE_API_KEY, GOOGLE_CSE_ID
+    from config import SERPAPI_KEY, GOOGLE_CSE_API_KEY, GOOGLE_CSE_ID
     return {
         "status": "healthy", 
         "model": MODEL_NAME,
         "search_apis": {
             "serpapi": "configured" if SERPAPI_KEY else "missing",
-            "google_cse": "configured" if (GOOGLE_API_KEY and GOOGLE_CSE_ID) else "missing"
+            "google_cse": "configured" if (GOOGLE_CSE_API_KEY and GOOGLE_CSE_ID) else "missing"
         }
     }
 

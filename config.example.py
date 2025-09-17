@@ -20,7 +20,7 @@ LIVE_MODEL = "gemini-2.0-flash-exp"  # Default live model name
 # Search API credentials
 SERPAPI_KEY = "your-serpapi-key-here"  # Replace with your SerpAPI key
 GOOGLE_CSE_ID = "your-google-cse-id-here"  # Replace with your Google CSE ID
-GOOGLE_API_KEY = "your-google-api-key-here"  # Replace with your Google API key
+GOOGLE__CSE_API_KEY = "your-google-cse-api-key-here"  # Replace with your Google API key
 
 # In-memory store
 SESSION_STATES = {}

@@ -19,6 +19,7 @@ venv/
 config.py  
 crisis_log.jsonl  
 service.json
+.env
 
 # Specific exclusions as requested
 templates/chatclaude.html

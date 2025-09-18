@@ -22,10 +22,6 @@ LOCATION = os.getenv("LOCATION", "us-central1")
 MODEL_NAME = os.getenv("MODEL_NAME", "gemini-2.0-flash-001")
 LIVE_MODEL = os.getenv("LIVE_MODEL", "gemini-2.0-flash-exp")
 
-# Search API credentials (from env vars)
-SERPAPI_KEY = os.getenv("SERPAPI_KEY")
-GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
-GOOGLE_CSE_API_KEY = os.getenv("GOOGLE_CSE_API_KEY")  # Ren
 
 
 

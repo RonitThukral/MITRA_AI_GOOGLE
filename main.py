@@ -14,6 +14,9 @@ from models import MODEL, tools
 from live_session import gemini_live_session_handler
 from google.cloud import texttospeech
 
+
+
+
 app = FastAPI()
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
 

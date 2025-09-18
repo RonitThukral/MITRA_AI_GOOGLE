@@ -1,6 +1,13 @@
 from typing import List, Dict
 import aiohttp
-from config import SERPAPI_KEY, GOOGLE_CSE_API_KEY, GOOGLE_CSE_ID
+# from config import SERPAPI_KEY, GOOGLE_CSE_API_KEY, GOOGLE_CSE_ID
+import os
+
+
+SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
+GOOGLE_CSE_API_KEY = os.environ.get("GOOGLE_CSE_API_KEY")
+GOOGLE_CSE_ID = os.environ.get("GOOGLE_CSE_ID")
+
 
 async def search_serpapi(query: str, num_results: int = 8) -> List[Dict]:
     """Search using SerpApi."""

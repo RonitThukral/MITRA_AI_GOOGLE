@@ -6,3 +6,4 @@ google-cloud-texttospeech
 aiohttp
 websockets
 python-dotenv==1.0.1
+google-generativeai==0.8.3

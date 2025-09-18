@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 import uvicorn
 
-from config import TEMPLATES_DIR, PROJECT_ID, LOCATION, MODEL_NAME, SYSTEM_PROMPTS, CRISIS_RESPONSE
+from config import TEMPLATES_DIR, PROJECT_ID, LOCATION, MODEL_NAME,SERPAPI_KEY, GOOGLE_CSE_API_KEY, GOOGLE_CSE_ID, SYSTEM_PROMPTS, CRISIS_RESPONSE
 from utils import ensure_session_state, build_prompt, build_prompt_with_search_results, trim_history, log_crisis_event
 from search import should_perform_web_search, build_optimized_search_query, perform_web_search
 from models import MODEL, tools
@@ -273,7 +273,6 @@ async def debug_sessions():
 
 @app.get("/health")
 async def health_check():
-    from config import SERPAPI_KEY, GOOGLE_CSE_API_KEY, GOOGLE_CSE_ID
     return {
         "status": "healthy", 
         "model": MODEL_NAME,

@@ -12,7 +12,7 @@ PROMPTS_PATH = Path("prompts/system_prompts.json")
 CRISIS_LOG = Path("crisis_log.jsonl")
 
 # Credentials
-# GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\hp\Desktop\chatapp\service.json"
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 

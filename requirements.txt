@@ -5,3 +5,4 @@ google-cloud-aiplatform
 google-cloud-texttospeech
 aiohttp
 websockets
+python-dotenv==1.0.1

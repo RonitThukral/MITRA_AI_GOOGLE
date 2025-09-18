@@ -5,7 +5,6 @@ venv/*
 .venv/*
 
 # Ignore configuration and sensitive files
-config.py
 .env
 service.json
 service-account.json

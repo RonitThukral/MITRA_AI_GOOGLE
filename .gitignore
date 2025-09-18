@@ -16,7 +16,6 @@ venv/
 *.swo
 
 # Sensitive files and credentials
-config.py  
 crisis_log.jsonl  
 service.json
 .env

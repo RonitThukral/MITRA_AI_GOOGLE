@@ -1,0 +1,47 @@
+# Ignore virtual environment
+venv/
+venv/*
+.venv/
+.venv/*
+
+# Ignore configuration and sensitive files
+config.py
+.env
+service.json
+service-account.json
+
+# Ignore Git-related files
+.git
+.gitignore
+
+# Ignore Python cache and compiled files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Ignore build and archive files
+*.tar.gz
+*.zip
+*.rar
+
+# Ignore IDE and editor files
+*.idea/
+*.vscode/
+*.swp
+
+# Ignore test and documentation build artifacts (if any)
+htmlcov/
+.tox/
+.coverage
+.pytest_cache/
+docs/_build/

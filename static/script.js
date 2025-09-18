@@ -468,7 +468,7 @@ function captureImage() {
 
 // Connect to live session WebSocket
 function connectToLiveSession() {
-    const wsUrl = `ws://${window.location.host}/live-session`;
+    const wsUrl = `wss://${window.location.host}/live-session`;
     liveWebSocket = new WebSocket(wsUrl);
 
     liveWebSocket.onopen = () => {

@@ -15,9 +15,33 @@ async def gemini_live_session_handler(websocket: WebSocket):
         config_message = await websocket.receive_text()
         try:
             config_data = json.loads(config_message)
-            config = config_data.get("setup", {})
+            client_config = config_data.get("setup", {})
         except Exception:
-            config = {}
+            client_config = {}
+
+
+
+        config = {
+            "system_instruction": client_config.get("system_instruction", {
+                "parts": [{"text": "You are a compassionate mental health support assistant named MITRA for live voice conversations. Provide warm, empathetic responses and be a good listener. Keep responses concise and natural for voice interaction. Don't ask too many questions and also provide empathetic solutions to the user."}]
+            }),
+            "generation_config": {
+                "response_modalities": ["AUDIO"],
+                "speech_config": {
+                    "voice_config": {
+                        "prebuilt_voice_config": {
+                            "voice_name": "Leda"  # voices {Kore, Charon , Leda , Aoede}
+                        }
+                    }
+                }
+            }
+        }
+
+        print(f"Connecting to Gemini Live with config: {json.dumps(config, indent=2)}")
+
+
+
+
 
         # Connect to Gemini Live
         async with genai_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:

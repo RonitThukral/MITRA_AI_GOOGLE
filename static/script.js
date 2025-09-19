@@ -499,7 +499,7 @@ function connectToLiveSession() {
 }
 
 function sendInitialSetupMessage() {
-    const systemInstruction = "You are a compassionate mental health support assistant named MITRA for live voice conversations. Provide warm, empathetic responses and be a good listener. Keep responses concise and natural for voice interaction.";
+    const systemInstruction = "You are a compassionate mental health support assistant named MITRA for live voice conversations. Provide warm, empathetic responses and be a good listener. Keep responses concise and natural for voice interaction.Don't ask too many questions and also provide empathetic solutions to the user.";
     
     const setupMessage = {
         setup: {
@@ -507,6 +507,7 @@ function sendInitialSetupMessage() {
                 parts: [{ text: systemInstruction }]
             },
             generation_config: { response_modalities: ["AUDIO"] },
+            
         },
     };
 

@@ -51,6 +51,9 @@ async def chat(
         current_mode = session_state["mode"]
         session_state["career_suggest_active"] = career_suggest
 
+        if session_state["career_suggest_active"] and session_state["mode"] == "voice_assistant":
+            session_state["mode"] = "text"
+            current_mode = session_state["mode"]
 
 
         # Handle post-live session check-in

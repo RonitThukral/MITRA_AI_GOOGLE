@@ -24,7 +24,6 @@ LIVE_MODEL = os.getenv("LIVE_MODEL", "gemini-2.0-flash-exp")
 
 
 
-
 # In-memory store
 SESSION_STATES = {}
 
